@@ -95,4 +95,19 @@ public class LineForce : MonoBehaviour {
             return null;
         }
     }
+        [SerializeField] private Transform startPosition;
+
+    void OnCollisionEnter(Collision collision)
+{
+    if (collision.gameObject.CompareTag("Cube"))
+    {
+        // Телепортировать мяч на стартовую позицию
+        transform.position = new Vector3(0, 0.5f, 1);
+        rigidbody.velocity = Vector3.zero;
+        rigidbody.angularVelocity = Vector3.zero;
+        isIdle = true;
+    }
+}
+
+
 }
